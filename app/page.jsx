@@ -1,25 +1,31 @@
 import ContactForm from "./components/ContactForm";
+import SiteNav from "./components/SiteNav";
+import SiteFooter from "./components/SiteFooter";
 
 const SERVICES = [
   {
     icon: "📱",
     title: "Social Media Marketing",
     body: "Strategy, content, and community management that turns followers into customers across every platform.",
+    href: "/services/social-media",
   },
   {
     icon: "🔍",
     title: "SEO & Content",
     body: "Rank higher and stay there. Technical SEO plus content that earns traffic and builds lasting authority.",
+    href: "/services/seo",
   },
   {
     icon: "🎯",
     title: "Paid Ads / PPC",
     body: "Google and Meta campaigns engineered for ROI — every dollar tracked, tested, and optimized.",
+    href: "/services/paid-ads",
   },
   {
     icon: "✨",
     title: "Web Design & Branding",
     body: "Stunning, conversion-focused websites and brand identities that make the right first impression.",
+    href: "/services/web-design",
   },
 ];
 
@@ -30,29 +36,10 @@ const STEPS = [
   { n: "04", title: "Optimize", body: "Continuous testing and reporting so your results compound over time." },
 ];
 
-function Logo() {
-  return (
-    <div className="logo">
-      <span className="mark">T</span> TWIN<span className="sub">digital</span>
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <>
-      {/* Nav */}
-      <nav className="nav">
-        <div className="wrap nav-inner">
-          <Logo />
-          <div className="nav-links">
-            <a href="#services">Services</a>
-            <a href="#process">Process</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <a href="#contact" className="btn">Free Strategy Call</a>
-        </div>
-      </nav>
+      <SiteNav />
 
       {/* Hero */}
       <header className="hero">
@@ -70,8 +57,8 @@ export default function Home() {
             standout web design — all under one roof.
           </p>
           <div className="hero-cta">
-            <a href="#contact" className="btn">Get a Free Strategy Call</a>
-            <a href="#services" className="btn btn-ghost">See What We Do</a>
+            <a href="#contact" className="btn">Free Consultation</a>
+            <a href="/onboarding" className="btn btn-ghost">Start Your Project</a>
           </div>
         </div>
       </header>
@@ -89,11 +76,12 @@ export default function Home() {
           </div>
           <div className="grid">
             {SERVICES.map((s) => (
-              <div className="card" key={s.title}>
+              <a className="card" key={s.title} href={s.href}>
                 <div className="ico" aria-hidden="true">{s.icon}</div>
                 <h3>{s.title}</h3>
                 <p>{s.body}</p>
-              </div>
+                <span className="card-link">Learn more →</span>
+              </a>
             ))}
           </div>
         </div>
@@ -152,12 +140,6 @@ export default function Home() {
                 <a href="mailto:yin@twindigitalmarketing.com">
                   yin@twindigitalmarketing.com
                 </a>
-                <br />
-                <div className="socials">
-                  <a href="#" aria-label="Instagram">Instagram</a>
-                  <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                  <a href="#" aria-label="X">X</a>
-                </div>
               </div>
             </div>
             <ContactForm />
@@ -165,13 +147,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer>
-        <div className="wrap foot">
-          <Logo />
-          <div>© 2026 Twin Digital Marketing. All rights reserved.</div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

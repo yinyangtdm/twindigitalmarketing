@@ -33,3 +33,5 @@ next-env.d.ts
 
 # local mockup (not part of the production app)
 /mockup
+
+.vercel
