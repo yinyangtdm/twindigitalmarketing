@@ -44,13 +44,10 @@ export default function Home() {
       {/* Hero */}
       <header className="hero">
         <div className="wrap">
-          <div className="pill">
-            <span className="dot" /> Full-service digital marketing
-          </div>
           <h1>
-            Marketing that makes
+            Make your brand
             <br />
-            your brand <span className="accent">impossible to ignore.</span>
+            <span className="accent">impossible to ignore.</span>
           </h1>
           <p className="sub">
             We help businesses grow with data-driven social, SEO, paid ads, and
