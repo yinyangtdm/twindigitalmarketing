@@ -1,7 +1,7 @@
 export default function Logo() {
   return (
-    <a href="/" className="logo">
-      fightfor<span className="accent">.you</span>
+    <a href="/">
+      <img src="/logo.svg" alt="Twin Digital Marketing" height="36" style={{ display: "block" }} />
     </a>
   );
 }
