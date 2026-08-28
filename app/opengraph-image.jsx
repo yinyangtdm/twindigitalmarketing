@@ -32,27 +32,28 @@ export default async function OpenGraphImage() {
           }}
         >
           <img src={logoSrc} alt="" height={56} />
-          <div style={{ fontSize: "28px", fontWeight: 600, letterSpacing: "-0.02em" }}>
+          <div style={{ fontSize: "28px", fontWeight: 600 }}>
             Twin Digital Marketing
           </div>
         </div>
         <div
           style={{
             display: "flex",
-            fontSize: "64px",
+            flexDirection: "column",
+            fontSize: "58px",
             fontWeight: 700,
-            lineHeight: 1.08,
-            letterSpacing: "-0.03em",
-            maxWidth: "900px",
+            lineHeight: 1.15,
+            maxWidth: "960px",
           }}
         >
-          <span>Make your brand </span>
-          <span style={{ color: "#3fd6cd" }}>impossible to ignore.</span>
+          <div style={{ display: "flex" }}>Make your brand</div>
+          <div style={{ display: "flex", color: "#3fd6cd" }}>impossible to ignore.</div>
         </div>
         <div
           style={{
+            display: "flex",
             marginTop: "28px",
-            fontSize: "28px",
+            fontSize: "26px",
             lineHeight: 1.4,
             color: "#9a9aa6",
             maxWidth: "820px",
