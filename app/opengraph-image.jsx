@@ -1,11 +1,13 @@
 import { ImageResponse } from "next/og";
+import { getLogoDataUri } from "../lib/load-logo";
 
-export const runtime = "edge";
 export const alt = "Twin Digital Marketing — Full-service digital marketing agency";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
+  const logoSrc = await getLogoDataUri();
+
   return new ImageResponse(
     (
       <div
@@ -25,32 +27,18 @@ export default function OpenGraphImage() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "20px",
+            gap: "24px",
             marginBottom: "40px",
           }}
         >
-          <div
-            style={{
-              width: "56px",
-              height: "56px",
-              borderRadius: "14px",
-              background: "linear-gradient(135deg, #20b2aa, #3fd6cd)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "28px",
-              fontWeight: 700,
-              color: "#04201e",
-            }}
-          >
-            T
-          </div>
+          <img src={logoSrc} alt="" height={56} />
           <div style={{ fontSize: "28px", fontWeight: 600, letterSpacing: "-0.02em" }}>
             Twin Digital Marketing
           </div>
         </div>
         <div
           style={{
+            display: "flex",
             fontSize: "64px",
             fontWeight: 700,
             lineHeight: 1.08,
@@ -58,7 +46,7 @@ export default function OpenGraphImage() {
             maxWidth: "900px",
           }}
         >
-          Make your brand{" "}
+          <span>Make your brand </span>
           <span style={{ color: "#3fd6cd" }}>impossible to ignore.</span>
         </div>
         <div

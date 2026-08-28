@@ -21,20 +21,42 @@ export const metadata = {
     telephone: false,
   },
   icons: {
-    icon: [{ url: "/logo.svg", type: "image/svg+xml" }],
+    icon: [
+      { url: "/icon", sizes: "32x32", type: "image/png" },
+      { url: "/logo.svg", type: "image/svg+xml" },
+    ],
     shortcut: ["/icon"],
     apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
+    other: [
+      {
+        rel: "icon",
+        url: "/android-chrome-192x192",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        rel: "icon",
+        url: "/android-chrome-512x512",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
   },
   manifest: "/manifest.webmanifest",
+  other: {
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-title": SITE.name,
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+  },
 };
 
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0a0a0b" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0b" },
-  ],
+  maximumScale: 5,
+  themeColor: "#0a0a0b",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }) {
