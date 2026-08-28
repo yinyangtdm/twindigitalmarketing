@@ -1,12 +1,12 @@
-const SITE_URL = "https://twindigitalmarketing.com";
+import { ROUTES, SITE } from "../lib/site";
 
 export default function sitemap() {
-  return [
-    {
-      url: SITE_URL,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
+  const lastModified = new Date();
+
+  return ROUTES.map(({ path, changeFrequency, priority }) => ({
+    url: `${SITE.url}${path}`,
+    lastModified,
+    changeFrequency,
+    priority,
+  }));
 }

@@ -1,0 +1,24 @@
+{
+  "name": "Twin Digital Marketing",
+  "short_name": "Twin Digital",
+  "description": "Full-service digital marketing — social, SEO, paid ads, and web design.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0b",
+  "theme_color": "#0a0a0b",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/apple-icon",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,39 +1,40 @@
 import "./globals.css";
-
-const SITE_URL = "https://twindigitalmarketing.com";
+import JsonLd from "./components/JsonLd";
+import { createMetadata, SITE } from "../lib/site";
+import { organizationSchema, websiteSchema } from "../lib/schema";
 
 export const metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(SITE.url),
+  ...createMetadata({ description: SITE.defaultDescription }),
   title: {
-    default: "Twin Digital Marketing — Social, SEO, Paid Ads & Web Design",
-    template: "%s | Twin Digital Marketing",
+    default: `${SITE.name} — Social, SEO, Paid Ads & Web Design`,
+    template: `%s | ${SITE.name}`,
   },
-  description:
-    "Twin Digital Marketing is a full-service agency helping businesses grow with data-driven social media, SEO, paid advertising, and standout web design.",
-  keywords: [
-    "digital marketing agency",
-    "social media marketing",
-    "SEO",
-    "PPC",
-    "paid ads",
-    "web design",
-    "branding",
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  publisher: SITE.name,
+  category: "Digital Marketing",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: [{ url: "/logo.svg", type: "image/svg+xml" }],
+    shortcut: ["/icon"],
+    apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/manifest.webmanifest",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0a0a0b" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0b" },
   ],
-  openGraph: {
-    title: "Twin Digital Marketing",
-    description:
-      "Full-service digital marketing — social, SEO, paid ads, and web design under one roof.",
-    url: SITE_URL,
-    siteName: "Twin Digital Marketing",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Twin Digital Marketing",
-    description:
-      "Full-service digital marketing — social, SEO, paid ads, and web design under one roof.",
-  },
-  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }) {
@@ -51,7 +52,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
+        {children}
+      </body>
     </html>
   );
 }

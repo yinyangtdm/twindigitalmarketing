@@ -1,11 +1,27 @@
-export const metadata = {
-  title: "Terms of Service",
-  description: "Terms and conditions for using Twin Digital Marketing's website and services.",
-};
+import JsonLd from "../components/JsonLd";
+import { createMetadata } from "../../lib/site";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const TITLE = "Terms of Service";
+const DESCRIPTION =
+  "Terms and conditions for using Twin Digital Marketing's website and services.";
+const PATH = "/terms";
+
+export const metadata = createMetadata({
+  title: TITLE,
+  description: DESCRIPTION,
+  path: PATH,
+});
 
 export default function TermsPage() {
   return (
     <div className="legal-page">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: TITLE, path: PATH },
+        ])}
+      />
       <div className="wrap">
         <div className="eyebrow">Legal</div>
         <h1>Terms of Service</h1>

@@ -1,11 +1,27 @@
-export const metadata = {
-  title: "Privacy Policy",
-  description: "How Twin Digital Marketing collects, uses, and protects your personal information.",
-};
+import JsonLd from "../components/JsonLd";
+import { createMetadata } from "../../lib/site";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const TITLE = "Privacy Policy";
+const DESCRIPTION =
+  "How Twin Digital Marketing collects, uses, and protects your personal information.";
+const PATH = "/privacy";
+
+export const metadata = createMetadata({
+  title: TITLE,
+  description: DESCRIPTION,
+  path: PATH,
+});
 
 export default function PrivacyPage() {
   return (
     <div className="legal-page">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: TITLE, path: PATH },
+        ])}
+      />
       <div className="wrap">
         <div className="eyebrow">Legal</div>
         <h1>Privacy Policy</h1>

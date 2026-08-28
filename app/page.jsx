@@ -1,6 +1,13 @@
 import ContactForm from "./components/ContactForm";
 import SiteNav from "./components/SiteNav";
 import SiteFooter from "./components/SiteFooter";
+import { createMetadata } from "../lib/site";
+
+export const metadata = createMetadata({
+  description:
+    "Make your brand impossible to ignore. Twin Digital Marketing helps businesses grow with social media, SEO, paid ads, and conversion-focused web design.",
+  path: "/",
+});
 
 const SERVICES = [
   {

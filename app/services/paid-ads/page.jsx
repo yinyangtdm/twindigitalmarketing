@@ -1,7 +1,17 @@
-export const metadata = {
-  title: "Paid Ads / PPC",
-  description: "Google and Meta campaigns engineered for ROI — every dollar tracked, tested, and optimised.",
-};
+import JsonLd from "../../components/JsonLd";
+import { createMetadata } from "../../../lib/site";
+import { breadcrumbSchema, serviceSchema } from "../../../lib/schema";
+
+const TITLE = "Paid Ads / PPC";
+const DESCRIPTION =
+  "Google and Meta campaigns engineered for ROI — every dollar tracked, tested, and optimised.";
+const PATH = "/services/paid-ads";
+
+export const metadata = createMetadata({
+  title: TITLE,
+  description: DESCRIPTION,
+  path: PATH,
+});
 
 const INCLUDED = [
   "Google Search, Display, and Shopping campaign setup",
@@ -23,6 +33,15 @@ const HOW = [
 export default function PaidAdsPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          serviceSchema({ name: TITLE, description: DESCRIPTION, path: PATH }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: TITLE, path: PATH },
+          ]),
+        ]}
+      />
       <header className="service-hero">
         <div className="wrap">
           <div className="eyebrow">Paid Ads / PPC</div>

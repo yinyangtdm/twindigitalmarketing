@@ -1,7 +1,17 @@
-export const metadata = {
-  title: "Social Media Marketing",
-  description: "Strategy, content, and community management that turns followers into customers across every platform.",
-};
+import JsonLd from "../../components/JsonLd";
+import { createMetadata } from "../../../lib/site";
+import { breadcrumbSchema, serviceSchema } from "../../../lib/schema";
+
+const TITLE = "Social Media Marketing";
+const DESCRIPTION =
+  "Strategy, content, and community management that turns followers into customers across every platform.";
+const PATH = "/services/social-media";
+
+export const metadata = createMetadata({
+  title: TITLE,
+  description: DESCRIPTION,
+  path: PATH,
+});
 
 const INCLUDED = [
   "Custom content strategy tailored to your brand voice and audience",
@@ -23,6 +33,15 @@ const HOW = [
 export default function SocialMediaPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          serviceSchema({ name: TITLE, description: DESCRIPTION, path: PATH }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: TITLE, path: PATH },
+          ]),
+        ]}
+      />
       <header className="service-hero">
         <div className="wrap">
           <div className="eyebrow">Social Media Marketing</div>

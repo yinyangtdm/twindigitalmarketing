@@ -1,7 +1,17 @@
-export const metadata = {
-  title: "SEO & Content",
-  description: "Technical SEO and content strategy that earns traffic and builds lasting authority.",
-};
+import JsonLd from "../../components/JsonLd";
+import { createMetadata } from "../../../lib/site";
+import { breadcrumbSchema, serviceSchema } from "../../../lib/schema";
+
+const TITLE = "SEO & Content";
+const DESCRIPTION =
+  "Technical SEO and content strategy that earns traffic and builds lasting authority.";
+const PATH = "/services/seo";
+
+export const metadata = createMetadata({
+  title: TITLE,
+  description: DESCRIPTION,
+  path: PATH,
+});
 
 const INCLUDED = [
   "Full technical SEO audit and implementation",
@@ -23,6 +33,15 @@ const HOW = [
 export default function SEOPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          serviceSchema({ name: TITLE, description: DESCRIPTION, path: PATH }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: TITLE, path: PATH },
+          ]),
+        ]}
+      />
       <header className="service-hero">
         <div className="wrap">
           <div className="eyebrow">SEO & Content</div>

@@ -1,7 +1,17 @@
-export const metadata = {
-  title: "Web Design & Branding",
-  description: "Stunning, conversion-focused websites and brand identities that make the right first impression.",
-};
+import JsonLd from "../../components/JsonLd";
+import { createMetadata } from "../../../lib/site";
+import { breadcrumbSchema, serviceSchema } from "../../../lib/schema";
+
+const TITLE = "Web Design & Branding";
+const DESCRIPTION =
+  "Stunning, conversion-focused websites and brand identities that make the right first impression.";
+const PATH = "/services/web-design";
+
+export const metadata = createMetadata({
+  title: TITLE,
+  description: DESCRIPTION,
+  path: PATH,
+});
 
 const INCLUDED = [
   "Custom website design — no templates, no shortcuts",
@@ -24,6 +34,15 @@ const HOW = [
 export default function WebDesignPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          serviceSchema({ name: TITLE, description: DESCRIPTION, path: PATH }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: TITLE, path: PATH },
+          ]),
+        ]}
+      />
       <header className="service-hero">
         <div className="wrap">
           <div className="eyebrow">Web Design & Branding</div>
